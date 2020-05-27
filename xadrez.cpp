@@ -5,6 +5,7 @@
 #define WIDTH 640
 #define HEIGTH 480
 
+
 SDL_Window * window;
 SDL_Renderer * render;
 SDL_Texture *texture = NULL;
@@ -26,6 +27,7 @@ SDL_Event evento;
 // k - Rei branco
 // p - Peao branco
 
+// Matriz principal do jogo
 char xadrez[8][8] = {
     {'T','C','B','Q','K','B','C','T'},
     {'P','P','P','P','P','P','P','P'},
@@ -37,11 +39,13 @@ char xadrez[8][8] = {
     {'t','c','b','q','k','b','c','t'}
 };
 
+//Vetor com as imagens 
 SDL_Texture * imagens[12];
+
 //Matriz com os nomes das imagens
 char nomesImagens [][50] = {"bb.png", "bp.png", "cb.png","cp.png","kb.png", "kp.png","rb.png","rp.png","pb.png","pp.png","tb.png","tp.png"};
 
-
+//Vetor com a letra da peça na mesma sequencia do vetor com o nome
 char pecas[] = {'b', 'B', 'c', 'C', 'k', 'K', 'q', 'Q', 'p','P','t', 'T'};
 
 int linhaOrigem = -1;
@@ -51,6 +55,7 @@ int colunaOrigem = -1;
 int moverPeca(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDestino){
 	int mover = 0;
 	char peca;
+
 	//Variavel para armazenar o deslocamento vertical
 	int desloVertical = abs(linhaDestino - linhaOrigem);
 	int desloHorizontal = abs(colunaDestino - colunaOrigem);
@@ -81,26 +86,25 @@ int moverPeca(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDes
 		//Verifica se o deslocamento horizontal � igual a 1 ou 2, e o deslocamento vertial � igual
 		//a 1 ou 2
 		if((peca == 'C' || peca == 'c') && ((desloVertical == 1 && desloHorizontal == 2 ) || (desloVertical == 2 && desloHorizontal == 1))){
-		mover = 1;
+		  mover = 1;
 		}
 
 		//Testa o movimento da rainha
 		//Verifica usando a mesmas l�gicas usadas para o bispo e torre
 		if((peca == 'Q' || peca == 'q') && ((desloVertical == desloHorizontal ) || (desloVertical == 0) || (desloHorizontal == 0))){
-		mover = 1;
+		  mover = 1;
 		}
 
 		//Testa o movimento do rei
 		//Verifica se o deslocamento vertical ou horizontal � igual 1 ou 0
 		if((peca == 'K' || peca == 'k') && ((desloVertical >= 0 && desloVertical <=1 ) && (desloHorizontal >= 0 && desloHorizontal <= 1))){
-		mover = 1;
+		  mover = 1;
 		}
 
 
 		//Testa o movimento do peao branco
 		//Calcula o deslocamento e verifica se n�o houve descolamento horizontal
 		if((peca == 'P') && ((linhaDestino - linhaOrigem) == 1) && (desloHorizontal == 0)){
-
 			mover = 1;
 		}
 
@@ -110,11 +114,11 @@ int moverPeca(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDes
 		}
 
 		if(mover){
-		// Copia o valor da posicao de origem para a posicao de destino
-		xadrez[linhaDestino][colunaDestino] = xadrez[linhaOrigem][colunaOrigem];
+		  // Copia o valor da posicao de origem para a posicao de destino
+		  xadrez[linhaDestino][colunaDestino] = xadrez[linhaOrigem][colunaOrigem];
 
-		//Coloca ' ' na linha e coluna de origem da matriz xadrez
-		xadrez[linhaOrigem][colunaOrigem] = ' ';
+		  //Coloca ' ' na linha e coluna de origem da matriz xadrez
+		  xadrez[linhaOrigem][colunaOrigem] = ' ';
 		} else{
 			return 9;
 		}
@@ -141,7 +145,7 @@ int iniciarImagens(){
     } 
 }
 
-
+// Função que vai no vetor de peçar para pegar o nome da imagem que vai ser renderizada
 SDL_Texture * imagemFromPeca(char peca){
   int i;
   for(i =0; i<12;i++){
@@ -150,8 +154,10 @@ SDL_Texture * imagemFromPeca(char peca){
     }
   }
 }
+
 //Funcao imprime o tabuleiro e as peças
 int colocarPecas(){
+  //Calcula a altura e largura de cada quadrado na tela
   int w = WIDTH / 8;
   int h = HEIGTH / 8;
   int linha, coluna,x,y;
@@ -170,6 +176,8 @@ int colocarPecas(){
 		  //Retangulo que ira posicionar a imagem
       SDL_Rect r = {x,y,w,h};
       SDL_RenderFillRect(render, &r);
+
+      //Pega a peça no seu devido lugar na matriz principal do jogo
       char p = xadrez[linha][coluna];
       if(p != ' '){
         int wOri, hOri;
@@ -177,25 +185,24 @@ int colocarPecas(){
         SDL_QueryTexture(img, NULL, NULL,&wOri,&hOri);
         SDL_Rect rOrig = {0,0,wOri, hOri};
         SDL_RenderCopy(render, img, &rOrig, &r);
-      }
+        }
       
       if(linhaOrigem == linha && colunaOrigem == coluna){
         SDL_SetRenderDrawColor(render, 0,0,255,255);
         SDL_RenderDrawRect(render, &r);
+        }
       }
-      }
-
-   
   }
 
   SDL_RenderPresent(render);
 }
 
-
-
+// Função que inicia o SDL e cria uma janela de 640 x 480
 int imprimirTela(){
+  // Inicia o video
   SDL_Init(SDL_INIT_VIDEO); 
 
+  // Inicia todas as funções do SDL
   if(SDL_Init(SDL_INIT_EVERYTHING) >= 0){
     printf("\n\nInicializando o SDL");
     window = SDL_CreateWindow("Jogo de Xadrez",50,50, WIDTH, HEIGTH, SDL_WINDOW_SHOWN);
@@ -217,6 +224,7 @@ int imprimirTela(){
   }
 }
 
+//Função que vai capturar o evento do clique do mouse para mover a peça
 int capturaEventos(){
   int e = SDL_PollEvent(&evento);
   if(evento.type == SDL_QUIT){
@@ -227,7 +235,6 @@ int capturaEventos(){
   else if(evento.type == SDL_MOUSEBUTTONDOWN){
     int w = WIDTH/8;
     int h = HEIGTH/8;
-
 
     int coluna = evento.motion.x / w;
     int linha = evento.motion.y / h;
@@ -250,15 +257,13 @@ int main(int argc)
   imprimirTela(); 
   iniciarImagens();
 
+  //While principal do jogo
 	while(1){
-		int linhaOrigem, linhaDestino, colunaOrigem, colunaDestino, resultado;
-
     colocarPecas();
     capturaEventos();
     SDL_Delay(5);
-
-	  }  
+  }  
 	  
-    return 0;
+  return 0;
 }
 

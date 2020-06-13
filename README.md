@@ -1,18 +1,32 @@
-<h1 align="center">Jogo de xadrez 👋</h1>
-<p>
-  <a href="https://twitter.com/defauth8" target="_blank">
-    <img alt="Twitter: defauth8" src="https://img.shields.io/twitter/follow/defauth8.svg?style=social" />
-  </a>
-</p>
+<h1 align="center">Jogo de xadrez :video_game: </h1>
+<h1 align="center">
+    <img alt="jogo-xadrez" title="#jogo-xadrez" src=".github/xadrez.jpg" width="400px" />
+</h1>
 
-> Projeto da hora aula hora relogio da faculdade de Analise e Desenvolvimento na Unisepe
+## Qual é objetivo do projeto?
+
+O objetivo foi resolver o problema do jogo da xadrez. Usando tanto em modo texto quanto em modo gráfico
+
+## Como foi contruído
+
+Primeiramente foi contruído um programa de linha de comando que move as peças com a passagem de parametros pelo tecla (Linha e coluna), depois foi contrúida a interface gráfica com a biblioteca SDL.
+
+## Técnologias
+
+- Linguagem [C++](https://www.cplusplus.com/)
+- [SDL](https://www.libsdl.org/) (Biblioteca de multimedia)
+
+## Interface do projeto
+
+<h1 align="center">
+    <img alt="jogo-xadrez" title="#jogo-xadrez" src=".github/interface.gif" width="500px" />
+</h1>
 
 ## Autor
 
 👤 **Daniel Ribeiro**
 
-* Twitter: [@defauth8](https://twitter.com/defauth8)
-* Github: [@defauth98](https://github.com/defauth98)
+- Linkedin: [Daniel Ribeiro](https://twitter.com/defauth8)
+- Github: [@defauth98](https://github.com/defauth98)
 
-***
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
+<h4 align="center">Com ❤️ por Daniel Ribeiro</h3>

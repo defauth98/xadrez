@@ -9,9 +9,9 @@ O objetivo foi resolver o problema do jogo da xadrez. Usando tanto em modo texto
 
 ## Como foi contruído
 
-Primeiramente foi contruído um programa de linha de comando que move as peças com a passagem de parametros pelo tecla (Linha e coluna), depois foi contrúida a interface gráfica com a biblioteca SDL.
+Primeiramente foi contruído um programa de linha de comando que move as peças com a passagem de parametros pelo tecla (Linha e coluna), depois foi contruída a interface gráfica com a biblioteca SDL.
 
-## Técnologias
+## Tecnologias
 
 - Linguagem [C++](https://www.cplusplus.com/)
 - [SDL](https://www.libsdl.org/) (Biblioteca de multimedia)
@@ -24,9 +24,9 @@ Primeiramente foi contruído um programa de linha de comando que move as peças 
 
 ## Autor
 
-👤 **Daniel Ribeiro**
+👤  **Daniel Ribeiro**
 
-- Linkedin: [Daniel Ribeiro](https://twitter.com/defauth8)
+- Linkedin: [Daniel Ribeiro](https://www.linkedin.com/in/daniel-ribeiro-397604164/)
 - Github: [@defauth98](https://github.com/defauth98)
 
-<h4 align="center">Com ❤️ por Daniel Ribeiro</h3>
+<h4 align="center">Com ❤️  por Daniel Ribeiro</h3>

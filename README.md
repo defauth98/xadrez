@@ -24,9 +24,9 @@ Primeiramente foi contruído um programa de linha de comando que move as peças 
 
 ## Autor
 
-👤  **Daniel Ribeiro**
+:man: **Daniel Ribeiro**
 
 - Linkedin: [Daniel Ribeiro](https://www.linkedin.com/in/daniel-ribeiro-397604164/)
 - Github: [@defauth98](https://github.com/defauth98)
 
-<h4 align="center">Com ❤️  por Daniel Ribeiro</h3>
+<h4 align="center">Com :heart: por Daniel Ribeiro</h3>
